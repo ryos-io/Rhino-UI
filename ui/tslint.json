@@ -1,0 +1,21 @@
+{
+    "defaultSeverity": "error",
+    "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+    "jsRules": {},
+    "rules": {
+        "jsx-boolean-value": ["always", { "never": ["exact"] }],
+        "jsx-no-lambda": ["always", { "never": ["onClick"] }],
+        "object-literal-sort-keys": false,
+        "prettier": [true, "./.prettierrc"],
+        "interface-name": false,
+        "member-access": [false],
+        "ordered-imports": true,
+        "class-name": true,
+        "no-var-requires": false,
+        "no-shadowed-variable": false,
+        "no-empty-interface": { "severity": "warning" },
+        "no-unused-variable": true,
+        "no-unused-expression": [true, "allow-fast-null-checks"]
+    },
+    "rulesDirectory": ["tslint-plugin-prettier"]
+}
