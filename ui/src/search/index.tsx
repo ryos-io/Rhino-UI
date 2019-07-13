@@ -3,6 +3,6 @@ import { RouteComponentProps } from 'react-router'
 
 export class SearchApp extends React.Component<Partial<RouteComponentProps>> {
     render() {
-        return <div>Hello world</div>
+        return <div>Hello Search</div>
     }
 }

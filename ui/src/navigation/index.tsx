@@ -19,10 +19,6 @@ export class Navigation extends React.Component<Partial<Props>> {
         const path = this.props.location ? this.props.location.pathname : ''
         return (
             <React.Fragment>
-                <Jumbotron className='mb-0'>
-                    <h1>Share it!</h1>
-                    <p>Share what you have</p>
-                </Jumbotron>
                 <Navbar
                     collapseOnSelect
                     expand='md'
