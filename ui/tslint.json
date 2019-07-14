@@ -28,8 +28,15 @@
             true,
             "./.prettierrc"
         ],
+        "max-classes-per-file": [
+            false
+        ],
+        "no-empty": false,
         "interface-name": false,
         "member-access": [
+            false
+        ],
+        "no-console": [
             false
         ],
         "ordered-imports": [

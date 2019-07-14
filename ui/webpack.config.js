@@ -1,20 +1,29 @@
-var webpack = require('webpack')
-var path = require('path')
-var package = require('./package.json')
-
-// variables
-var isProduction = process.argv.indexOf('-p') >= 0 || process.env.NODE_ENV === 'production'
-var sourcePath = path.join(__dirname, './src')
-var outPath = path.join(__dirname, './build')
+const webpack = require('webpack')
+const path = require('path')
+const package = require('./package.json')
 
 // plugins
-var HtmlWebpackPlugin = require('html-webpack-plugin')
-var MiniCssExtractPlugin = require('mini-css-extract-plugin')
-var WebpackCleanupPlugin = require('webpack-cleanup-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const WebpackCleanupPlugin = require('webpack-cleanup-plugin')
 
-module.exports = (env) => {
+module.exports = (env, options) => {
+    // create a nice object from the env variable
+    const envKeys = Object.keys(env).reduce((prev, next) => {
+        prev[`process.env.${next.toUpperCase()}`] = JSON.stringify(env[next]);
+        return prev;
+    }, {});
+
+    const isProduction = options.mode === 'production'
+    const envName = isProduction ? 'prod' : 'dev'
+    // const envName = 'prod'
+    const sourcePath = path.join(__dirname, './src')
+    const outPath = path.join(__dirname, './dist')
+    console.log(`Build target enviornment': ${options.mode}`);
+
     const TSSTRICT = (env && env.TSSTRICT) || false
     return {
+        mode: options.mode || 'development',
         context: sourcePath,
         entry: {
             app: './index.tsx',
@@ -89,30 +98,11 @@ module.exports = (env) => {
                 },
             ],
         },
-        optimization: {
-            splitChunks: {
-                name: true,
-                cacheGroups: {
-                    commons: {
-                        chunks: 'initial',
-                        minChunks: 2,
-                    },
-                    vendors: {
-                        test: /[\\/]node_modules[\\/]/,
-                        chunks: 'all',
-                        filename: isProduction ? 'vendor.[contenthash].js' : 'vendor.[hash].js',
-                        priority: -10,
-                    },
-                },
-            },
-            runtimeChunk: true,
-        },
         plugins: [
-            new webpack.EnvironmentPlugin({
-                NODE_ENV: 'development', // use 'development' unless process.env.NODE_ENV is defined
-                DEBUG: false,
-                TSSTRICT: false,
+            new webpack.NormalModuleReplacementPlugin(/(.*)\/dev\/(\.*)/, function (resource) {
+                resource.request = resource.request.replace(/dev/, `/${envName}/`);
             }),
+            new webpack.EnvironmentPlugin(envKeys),
             new WebpackCleanupPlugin(),
             new MiniCssExtractPlugin({
                 filename: '[hash].css',
@@ -120,14 +110,6 @@ module.exports = (env) => {
             }),
             new HtmlWebpackPlugin({
                 template: 'index.html',
-                minify: {
-                    minifyJS: true,
-                    minifyCSS: true,
-                    removeComments: true,
-                    useShortDoctype: true,
-                    collapseWhitespace: true,
-                    collapseInlineTagWhitespace: true,
-                },
                 append: {
                     head: `<script src="//cdn.polyfill.io/v3/polyfill.min.js"></script>`,
                 },
@@ -148,6 +130,12 @@ module.exports = (env) => {
             stats: 'minimal',
             clientLogLevel: 'warning',
             disableHostCheck: true,
+            proxy: {
+                '/api/v1': {
+                    target: 'http://localhost:8080',
+                    pathRewrite: { '^/api/v1': '' }
+                }
+            }
         },
         // https://webpack.js.org/configuration/devtool/
         devtool: isProduction ? 'hidden-source-map' : 'cheap-module-eval-source-map',
