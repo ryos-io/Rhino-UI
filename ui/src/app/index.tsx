@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Container } from 'react-bootstrap'
-import { createProvider } from 'reactn'
 import { BrowserRouter, Route } from 'react-router-dom'
+import { createProvider } from 'reactn'
 import { Navigation } from '../navigation'
 import Routes from '../routes'
 
