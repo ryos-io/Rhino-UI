@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Jumbotron, Nav, Navbar } from 'react-bootstrap'
+import { Nav, Navbar } from 'react-bootstrap'
 import { RouteComponentProps } from 'react-router'
 import { Link, NavLink } from 'react-router-dom'
 const icon = require('./blue-ferret.png')

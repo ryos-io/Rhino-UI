@@ -1,29 +1,31 @@
 import * as React from 'react'
 import { Container } from 'react-bootstrap'
+import { createProvider } from 'reactn'
 import { BrowserRouter, Route } from 'react-router-dom'
 import { Navigation } from '../navigation'
-import { Props } from './model'
 import Routes from '../routes'
-import { ProtectedRouteProps } from 'routes/ProtectedRoute'
 
-export const App: React.FC<Props> = () => {
-    const [isAuthenticated, userHasAuthenticated] = React.useState(false)
-    const defaultProtectedRouteProps: ProtectedRouteProps = {
-        isAuthenticated,
-        userHasAuthenticated,
-        authenticationPath: '/login',
-    }
+const InitialGlobalState = {
+    isAuthenticated: false,
+    authenticationPath: '/login',
+}
+
+const Provider = createProvider(InitialGlobalState)
+
+export const App: React.FC = () => {
     return (
-        <BrowserRouter>
-            <header>
-                <Route component={Navigation} />
-            </header>
-            <main>
-                <Container fluid>
-                    <Routes {...defaultProtectedRouteProps} />
-                </Container>
-            </main>
-        </BrowserRouter>
+        <Provider>
+            <BrowserRouter>
+                <header>
+                    <Route component={Navigation} />
+                </header>
+                <main>
+                    <Container fluid>
+                        <Routes />
+                    </Container>
+                </main>
+            </BrowserRouter>
+        </Provider>
     )
 }
 

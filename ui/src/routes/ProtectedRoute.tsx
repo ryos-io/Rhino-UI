@@ -1,17 +1,15 @@
 import * as React from 'react'
+import { useGlobal } from 'reactn'
 
 import { Redirect, Route, RouteProps } from 'react-router-dom'
 
-export interface ProtectedRouteProps extends RouteProps {
-    isAuthenticated: boolean
-    authenticationPath: string,
-    userHasAuthenticated: (isAuthenticated: boolean) => void
-}
+export const ProtectedRoute: React.FC<RouteProps> = (props) => {
+    const [isAuthenticated] = useGlobal('isAuthenticated')
+    const [authenticationPath] = useGlobal('authenticationPath')
 
-export const ProtectedRoute: React.FC<ProtectedRouteProps> = (props) => {
     let redirectPath: string = ''
-    if (!props.isAuthenticated) {
-        redirectPath = props.authenticationPath
+    if (!isAuthenticated) {
+        redirectPath = authenticationPath
     }
 
     if (redirectPath) {
