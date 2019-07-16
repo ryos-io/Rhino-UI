@@ -9,11 +9,13 @@ Archiver, etc. which enable developers:
 * to run automated performance tests against web services, 
 * to collect and visualize metrics on Rhino Management UI, 
 * to drill down into performance measurements to detect the bottlenecks, 
+* to determine the performance regression after each run, 
 * to compare load test executions, 
-* to archive load test results
+* to archive load test results.
 
 ### Architecture Overview
 
+> **_NOTE:_** This is an early draft of architecture design. 
 
 <p align="center">
   <img src="https://github.com/ryos-io/Rhino-PAP/blob/master/system_arch.png"  width="600"/>
