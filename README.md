@@ -3,7 +3,7 @@
 > **_NOTE:_** We are just getting started with the platform. Feel free to join Rhino PAP community on [Gitter](https://gitter.im/ryos-io/Rhino)
 
 Rhino PAP is a load and performance testing platform, to run automated and distributed load tests against web services, 
-to assess the performance characteristics of the APIs. Rhino PAP consists of several components, like Management UI, Scheduler, 
+to assess the performance characteristics of the web and cloud services. Rhino PAP consists of several components, like Management UI, Scheduler, 
 Archiver, etc. which enable developers:
 
 * to run automated performance tests against web services, 
