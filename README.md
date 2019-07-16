@@ -13,7 +13,7 @@ Archiver, etc. which enable developers:
 * to compare load test executions, 
 * to archive load test results.
 
-### Architecture Overview
+### Architecture Overview from 30K feet
 
 > **_NOTE:_** This is an early draft of architecture design. 
 
