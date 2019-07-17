@@ -12,7 +12,7 @@ Archiver, etc. which enable developers:
 * to determine the performance regression after each run, 
 * to report load and performance tests with their setup together like type of instances, number of instances, etc.  
 * to make load and performance test results comparable, 
-* to archive load test results.
+* to archive the test results for long term analysis.
 
 ### Architecture Overview from 30K feet
 
