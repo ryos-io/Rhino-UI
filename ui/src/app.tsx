@@ -1,20 +1,21 @@
 import * as React from 'react'
 import { Container } from 'react-bootstrap'
 import { BrowserRouter, Route } from 'react-router-dom'
-import { createProvider } from 'reactn'
-import { Navigation } from '../navigation'
-import Routes from '../routes'
+import { setGlobal } from 'reactn'
+import ErrorBoundary from './components/error'
+import { Navigation } from './components/navigation'
+import Routes from './components/routes'
+import authenticatonService from './services/dev/authenticationService'
 
 const InitialGlobalState = {
-    isAuthenticated: false,
     authenticationPath: '/login',
+    authenticationService: authenticatonService,
 }
-
-const Provider = createProvider(InitialGlobalState)
+setGlobal(InitialGlobalState)
 
 export const App: React.FC = () => {
     return (
-        <Provider>
+        <ErrorBoundary>
             <BrowserRouter>
                 <header>
                     <Route component={Navigation} />
@@ -25,7 +26,7 @@ export const App: React.FC = () => {
                     </Container>
                 </main>
             </BrowserRouter>
-        </Provider>
+        </ErrorBoundary>
     )
 }
 

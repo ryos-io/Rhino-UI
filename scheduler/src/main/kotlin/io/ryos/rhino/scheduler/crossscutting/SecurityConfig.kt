@@ -58,7 +58,7 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
                     .and()
                     .logout()
                     .and()
-                    .httpBasic()
+                    .formLogin()
         }
     }
 
