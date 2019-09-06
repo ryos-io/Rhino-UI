@@ -21,7 +21,7 @@ export const App: React.FC = () => {
                     <Route component={Navigation} />
                 </header>
                 <main>
-                    <Container fluid>
+                    <Container>
                         <Routes />
                     </Container>
                 </main>

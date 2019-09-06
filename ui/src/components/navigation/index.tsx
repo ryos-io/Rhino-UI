@@ -26,54 +26,39 @@ export const Navigation = (props: RouteProps) => {
 
     const path = props.location ? props.location.pathname : ''
     return (
-        <React.Fragment>
-            <Navbar
-                collapseOnSelect
-                expand='md'
-                bg='dark'
-                variant='dark'
-                sticky='top'
-                style={{ justifyContent: 'normal' }}>
-                <Navbar.Toggle className='mr-2' aria-controls='responsive-navbar-nav' />
-                <Navbar.Brand as={Link} to='/'>
-                    <img src={icon} alt={'Logo'} width='40px' />
-                </Navbar.Brand>
-                <Navbar.Collapse id='responsive-navbar-nav'>
-                    <Nav className='mr-auto'>
-                        <Nav.Link as={NavLink} href='#' to='/home' active={path === '/home'}>
-                            Home
-                        </Nav.Link>
-                        <Nav.Link
-                            as={NavLink}
-                            href='#'
-                            to='/search'
-                            active={path === '/search'}
-                            hidden={!isAuthenticated}>
-                            Search
-                        </Nav.Link>
-                    </Nav>
-                    <Nav>
-                        <Nav.Link
-                            as={NavLink}
-                            href='#'
-                            to='/login'
-                            active={path === '/login'}
-                            hidden={isAuthenticated}
-                            className='just'>
-                            Login
-                        </Nav.Link>
-                        <Nav.Link
-                            as={NavLink}
-                            href='#'
-                            to='/logout'
-                            active={path === '/logout'}
-                            hidden={!isAuthenticated}>
-                            Logout
-                        </Nav.Link>
-                    </Nav>
-                </Navbar.Collapse>
-            </Navbar>
-        </React.Fragment>
+        <Navbar collapseOnSelect expand='md' bg='dark' variant='dark' style={{ marginBottom: '20px' }}>
+            <Navbar.Toggle className='mr-2' aria-controls='responsive-navbar-nav' />
+            <Navbar.Brand as={Link} to='/'>
+                <img src={icon} alt={'Logo'} width='40px' />
+            </Navbar.Brand>
+            <Navbar.Collapse id='responsive-navbar-nav'>
+                <Nav className='mr-auto'>
+                    <Nav.Link as={NavLink} href='#' to='/home' active={path === '/home'}>
+                        Home
+                    </Nav.Link>
+                    <Nav.Link as={NavLink} href='#' to='/run' active={path === '/run'} hidden={!isAuthenticated}>
+                        Run
+                    </Nav.Link>
+                    <Nav.Link as={NavLink} href='#' to='/search' active={path === '/search'} hidden={!isAuthenticated}>
+                        Search
+                    </Nav.Link>
+                </Nav>
+                <Nav>
+                    <Nav.Link
+                        as={NavLink}
+                        href='#'
+                        to='/login'
+                        active={path === '/login'}
+                        hidden={isAuthenticated}
+                        className='just'>
+                        Login
+                    </Nav.Link>
+                    <Nav.Link as={NavLink} href='#' to='/logout' active={path === '/logout'} hidden={!isAuthenticated}>
+                        Logout
+                    </Nav.Link>
+                </Nav>
+            </Navbar.Collapse>
+        </Navbar>
     )
 }
 export default Navigation
