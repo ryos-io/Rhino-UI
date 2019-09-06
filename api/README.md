@@ -1,6 +1,6 @@
 # Rhino Scheduler
 
-Task scheduler of the Rhino Load Testing Platform.
+Task api of the Rhino Load Testing Platform.
 
 Used technologies:
 

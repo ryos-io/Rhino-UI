@@ -1,4 +1,4 @@
-package io.ryos.rhino.scheduler.crossscutting
+package io.ryos.rhino.api.crossscutting
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

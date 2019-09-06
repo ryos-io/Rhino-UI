@@ -1,4 +1,4 @@
-package io.ryos.rhino.scheduler.api;
+package io.ryos.rhino.api.api;
 
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation

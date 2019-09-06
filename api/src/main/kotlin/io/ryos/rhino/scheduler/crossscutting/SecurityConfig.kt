@@ -1,4 +1,4 @@
-package io.ryos.rhino.scheduler.crossscutting
+package io.ryos.rhino.api.crossscutting
 
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired

@@ -1,4 +1,4 @@
-package io.ryos.rhino.scheduler.crossscutting
+package io.ryos.rhino.api.crossscutting
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -20,7 +20,7 @@ class SwaggerConfig {
                 .ignoredParameterTypes(Authentication::class.java)
                 .select()
                 .apis(RequestHandlerSelectors.any())
-                .apis(RequestHandlerSelectors.basePackage("io.ryos.rhino.scheduler"))
+                .apis(RequestHandlerSelectors.basePackage("io.ryos.rhino.api"))
                 .paths(PathSelectors.any())
                 .build().apiInfo(apiEndPointsInfo());
     }
