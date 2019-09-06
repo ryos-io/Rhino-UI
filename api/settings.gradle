@@ -4,4 +4,4 @@ pluginManagement {
         jcenter()
     }
 }
-rootProject.name = "rhino-scheduler"
+rootProject.name = "rhino-api"

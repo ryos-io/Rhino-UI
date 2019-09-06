@@ -1,4 +1,4 @@
-package io.ryos.rhino.scheduler
+package io.ryos.rhino.api
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.autoconfigure.data.rest.RepositoryRestMvcAutoConfiguration
