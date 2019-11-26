@@ -20,15 +20,15 @@ dependencies {
 	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 	implementation "org.jetbrains.kotlin:kotlin-reflect"
 
-	implementation "org.springframework.boot:spring-boot-starter-data-rest"
+	implementation "io.springfox:springfox-swagger-ui:2.9.2"
+	implementation "io.springfox:springfox-swagger2:2.9.2"
 	implementation "org.jetbrains.kotlin:kotlin-reflect"
+	implementation "org.springframework.boot:spring-boot-starter-actuator"
+	implementation "org.springframework.boot:spring-boot-starter-actuator:2.1.3.RELEASE"
+	implementation "org.springframework.boot:spring-boot-starter-data-rest"
+	implementation "org.springframework.security:spring-security-config"
 	implementation "org.springframework.security:spring-security-oauth2-client"
 	implementation "org.springframework.security:spring-security-oauth2-jose"
-	implementation "org.springframework.security:spring-security-config"
-	implementation "org.springframework.boot:spring-boot-starter-actuator"
-	implementation "io.springfox:springfox-swagger2:2.9.2"
-	implementation "io.springfox:springfox-swagger-ui:2.9.2"
-	implementation "org.springframework.boot:spring-boot-starter-actuator:2.1.3.RELEASE"
 	runtime "org.springframework.boot:spring-boot-devtools"
 
 	testImplementation "org.springframework.security:spring-security-test"
@@ -71,3 +71,6 @@ test {
 	}
 }
 
+springBoot {
+    mainClassName = 'io.ryos.rhino.api.AppKt'
+}
